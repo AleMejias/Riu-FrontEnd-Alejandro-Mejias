@@ -1,0 +1,26 @@
+.grid-container{
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    .grid-container__item{
+        position: relative;
+    }
+}
+
+
+
+@media ( max-width: 767px ){
+    .grid-container{
+        grid-template-columns: 1fr;
+    }
+}
+@media (min-width: 768px) and (max-width: 999px){
+    .grid-container {
+        grid-template-columns: repeat( 3,1fr );
+    }
+}
+@media (min-width: 1000px){
+    .grid-container {
+        grid-template-columns: repeat( 4,1fr );
+    }
+}

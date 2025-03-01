@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-details">
+      <p class="card-title">{{ hero.name }}</p>
+      <p class="card-subtitle">{{ hero.universe }}</p>
+    </div>
+    @let config = buttonConfig();
+    @if( config ){
+        <div class="card-button">
+            <app-generic-button [buttonConfig]="config" [buttonConfig]="config" (buttonEvent)="onHandleButtonClick($event)"/>
+        </div>
+    }
+</div>

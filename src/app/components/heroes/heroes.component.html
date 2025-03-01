@@ -1,0 +1,19 @@
+<section class="container-fluid border border-danger">
+    <div class="row mt-4">
+        <div class="col"><input type="text"></div>
+    </div>
+    <div class="row mt-4">
+        <div class="grid-container">
+            @for (hero of heroes(); track hero.id) {
+                <div class="grid-container__item">
+                    <app-heroe-card 
+                        [hero]="hero" 
+                        [buttonConfig]="cardHeroDetailButton()"
+                        (buttonEvent)="onHandleHeroDetail($event)"
+                        />
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
