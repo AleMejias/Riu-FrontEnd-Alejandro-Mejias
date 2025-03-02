@@ -32,6 +32,7 @@
       "@ui-models/*": ["app/ui/models/*"],
       "@ui-dialogs/*": ["app/ui/dialogs/*"],
       "@ui-services/*": ["app/ui/services/*"],
+      "@ui-helpers/*": ["app/ui/helpers/*"],
       "@fontawesome-provider/*":["app/assets/fontawesome/*"],
       "@core-services/*": ["app/core/services/*"],
       "@core-interceptors/*": ["app/core/interceptors/*"]

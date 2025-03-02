@@ -3,7 +3,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { HeroesService } from '@services/heroes.service';
 import { HeroeCardComponent } from '@ui-components/heroe-card/heroe-card.component';
 import { SubscriptionsManagerService } from '@core-services/subscription-manager.service';
-import { takeUntil } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
 import { Hero } from '@models/heroes.model';
 import { GenericButtonConfigModel } from '@ui-models/generic-button.model';
 import { Router } from '@angular/router';
@@ -15,7 +15,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FontAwesomeProviders } from 'assets/fontawesome/font-awesome-icons.provider';
 import { GenericPaginatorConfigModel, PaginatorEmitEvent } from '@shared-models/generic-paginator.model';
 import { GenericPaginatorComponent } from '@shared-components/generic-paginator/generic-paginator.component';
-import { FILTERS_HELPER } from '@shared-helpers/filters.helper';
+import { InputTextConfigModel } from '@ui-models/generic-text.model';
+import { FormControl } from '@angular/forms';
+import { GenericInputTextComponent } from '@ui-components/generic-input-text/generic-input-text.component';
+import { InputTextHelpers } from '@ui-helpers/generic-input-text.helpers';
 
 @Component({
   selector: 'app-heroes',
@@ -23,7 +26,8 @@ import { FILTERS_HELPER } from '@shared-helpers/filters.helper';
     CommonModule,
     HeroeCardComponent,
     GenericButtonComponent,
-    GenericPaginatorComponent
+    GenericPaginatorComponent, 
+    GenericInputTextComponent
   ],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.scss'
@@ -50,6 +54,15 @@ implements OnInit {
     totalPages: 0,
     pageSizeOptions: [3 , 5 , 7 , 10]
   })
+  searchInputFormControl = new FormControl('');
+  searchInputConfig =  signal<InputTextConfigModel>({
+    inputId: 'searchInputFormControl',
+    fontAwesomeIcon: FontAwesomeProviders.faSearch,
+    control: this.searchInputFormControl,
+    iconStyles: {padding: '0px 10px' , verticalAlign: 'sub'},
+    label: '',
+    placeHolder: 'Ingrese el nombre del heroe'
+  });
 
   createHeroButton = signal<GenericButtonConfigModel<Hero>>({
       butttonId: 'create_hero_button',
@@ -101,36 +114,60 @@ implements OnInit {
   )
   heroes = signal<Hero[]>([]);
   heroSelected = signal<Hero | null>(null);
+  search: string = "";
 
   ngOnInit(): void {
+
+    this.searchInputFormControl.valueChanges
+    .pipe(
+      takeUntil(this.subscriptionsManagerService.subscriptions$),
+      debounceTime(500),
+      distinctUntilChanged()
+    )
+    .subscribe({
+      next: ( value ) => {
+        if( this.heroes().length > 0 ){
+          this.getHeroes();
+
+
+        }
+
+        console.log('VALUE CAMBIO ',value)
+      }
+    });
+
 
     this.getHeroes()
   }
   getHeroes(){
-    const request = FILTERS_HELPER.buildHttpParams({
-      _page: this.paginatorConfig().pageNumber,
-      _limit: this.paginatorConfig().pageSize
-    })
+    
     this.heroesService.getHeroes()
     .pipe(takeUntil(this.subscriptionsManagerService.subscriptions$))
     .subscribe({
       next: ( response ) => {
-        console.log(response)
-        console.log(this.paginatorConfig())
+        console.log('response ',response)
         const from = (this.paginatorConfig().pageNumber * this.paginatorConfig().pageSize) - this.paginatorConfig().pageSize;
         const to = from + this.paginatorConfig().pageSize;
-        const pagination = response.slice(from , to);
+        let result: Hero[] = [];
+        const heroName = InputTextHelpers.removeAccentsAndSymbols( this.searchInputFormControl.value ?? "" );
+        if( heroName ){
+          const filterResult = InputTextHelpers.filterHeroes( response , heroName );
+          result = filterResult.slice(from , to);
+          console.log('heroes filtrados ',result)
+        }else {
+          result = response.slice(from , to);
+          console.log('heroes paginados ',result)
+        }
+
         this.paginatorConfig.update(( state ) => ({
           ...state,
           totalRecords: response.length,
           totalPages: Math.ceil(response.length / state.pageSize)
         }));
-        console.log(pagination)
-        this.heroes.set( pagination );
+        this.heroes.set( result );
       },
       error: ( error ) => {
         this.snackBarService.show('error',error.message || "No fue posible ejecutar la acción requerida.", 'Atención');
-        console.log('GET HEROES ERROR ',error)
       }
     })
   }
@@ -138,7 +175,7 @@ implements OnInit {
     const { pageNumber , pageSize } = page;
     this.paginatorConfig.update(( state ) => ({
       ...state,
-      pageNumber, 
+      pageNumber: ( pageSize !== state.pageSize ) ? 1 : pageNumber, 
       pageSize
     }));
     this.getHeroes();

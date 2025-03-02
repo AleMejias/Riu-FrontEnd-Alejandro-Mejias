@@ -6,16 +6,6 @@
     @let detailConfig = buttonDetailConfig();
     @let editConfig = buttonEditConfig();
     @let deleteConfig = buttonDeleteConfig();
-    <!-- @if( detailConfig ){
-        <div class="detail-button">
-            <app-generic-button [buttonConfig]="detailConfig" (buttonEvent)="onHandleButtonClick($event)"/>
-        </div>
-    } -->
-    <!-- @if( editConfig ){
-        <div class="edit-button">
-            <app-generic-button [buttonConfig]="editConfig" (buttonEvent)="onHandleButtonClick($event)"/>
-        </div>
-    } -->
     <div class="card-actions_buttons">
         @if( detailConfig ){
             <div class="detail-button">

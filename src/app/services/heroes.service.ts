@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Hero } from '../models/heroes.model';
-import { catchError, filter, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

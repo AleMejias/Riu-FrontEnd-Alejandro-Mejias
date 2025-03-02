@@ -29,6 +29,7 @@ implements OnInit {
   private readonly subscriptionsManagerService = inject( SubscriptionsManagerService );
   private readonly snackBarService = inject( SnackBarService );
   public readonly spinnerService = inject( SpinnerService );
+  
   backButtonConfig = signal<GenericButtonConfigModel<Hero>>({
       content: null,
       fontAwesomeIcon: null,
@@ -54,13 +55,14 @@ implements OnInit {
         )
         .subscribe({
           next: ( response ) => {
-            console.log('getHeroById response ',response)
             this.hero = response;
           },
           error: ( error: HttpErrorResponse ) => {
             this.snackBarService.show('error',error.message || "No fue posible realizar la búsqueda, intente nuevamente.", 'Atención');
           }
         })
+      }else {
+        this.router.navigate(['heroes']);
       }
   }
   onHandleButtonClick(){

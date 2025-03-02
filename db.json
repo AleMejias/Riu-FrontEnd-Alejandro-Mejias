@@ -113,6 +113,12 @@
       "name": "HARLEY QUINN",
       "biography": "La psicóloga Harleen Quinzel estaba trabajando en el Asilo Arkham cuando el Joker fue detenido e internado para recibir tratamiento; cuando le dieron el caso, Joker fue ganándose poco a poco su confianza y manipulandola en sus sesiones hasta el punto de empezar a revertir los roles, con ella contándole intimidades de su vida, su pasado familiar y metas, que le hicieron plantearse el rumbo de su vida.  Antes de darse cuenta Harleen estaba completamente enamorada de él, hasta niveles obsesivos y el villano la utilizó para escapar del manicomio. Sorprendentemente, renunció a su carrera para convertirse en una acompañante del payaso, adoptando incluso una identidad como la del Joker, en honor a la figura del arlequín, modificando su propio nombre, Harley Quinn.",
       "universe": "DC"
+    },
+    {
+      "name": "ANTORCHA HUMANA",
+      "biography": "Pertenece a los cuatro fantasticos",
+      "universe": "MARVEL",
+      "id": "c320"
     }
   ]
 }

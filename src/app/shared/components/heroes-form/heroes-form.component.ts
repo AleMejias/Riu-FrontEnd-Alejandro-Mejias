@@ -71,7 +71,7 @@ export default class HeroesFormComponent {
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
-    console.log('params ',params);
+    
       if( Object.keys( params ).length > 0 ){
         const { id } = params;
         this.heroesService.getHeroById( id )
@@ -80,7 +80,7 @@ export default class HeroesFormComponent {
         )
         .subscribe({
           next: ( response ) => {
-            console.log('getHeroById response ',response)
+
             this.heroForm.patchValue(response);
             this.hero = response;
           },

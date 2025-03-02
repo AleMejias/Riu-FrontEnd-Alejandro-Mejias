@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeModule , IconDefinition} from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-fontawesome-icon',

@@ -1,0 +1,17 @@
+@let config = inputConfig();
+<div class="inputContainer">
+    @if( config.label ){
+        <div class="inputContainer__label">
+            <span>{{ config.label }}</span>
+        </div>
+    }
+    <div class="inputContainer__input">
+        <input type="text" [formControl]="config.control" [placeholder]="config.placeHolder" />
+        @if( config.fontAwesomeIcon  !== null ) {
+            <app-fontawesome-icon 
+                [style]="config.iconStyles"
+                [iconDefition]="config.fontAwesomeIcon" 
+            />
+        }
+    </div>
+</div>
