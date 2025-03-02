@@ -18,7 +18,11 @@ import { GenericPaginatorComponent } from '@shared-components/generic-paginator/
 import { InputTextConfigModel } from '@ui-models/generic-text.model';
 import { FormControl } from '@angular/forms';
 import { GenericInputTextComponent } from '@ui-components/generic-input-text/generic-input-text.component';
-import { InputTextHelpers } from '@ui-helpers/generic-input-text.helpers';
+import { QueryFiltersParams } from '@shared-models/filters.model';
+import { FILTERS_HELPER } from '@shared-helpers/filters.helper';
+
+const DEFAULT_PAGE_SIZE = 3;
+const DEFAULT_PAGE_NUMBER = 1;
 
 @Component({
   selector: 'app-heroes',
@@ -47,12 +51,13 @@ implements OnInit {
     pageOptionsFirstTitle: 'Elementos por página',
     pageOptionsSecondTitle: '',
     pageInfoTitle: 'Página',
-    pageInfoSeparator: '-',
-    pageNumber: 1,
-    pageSize: 3,
+    pageInfoSeparator: '',
+    pageNumber: DEFAULT_PAGE_NUMBER,
+    pageSize: DEFAULT_PAGE_SIZE,
     totalRecords: 0,
     totalPages: 0,
-    pageSizeOptions: [3 , 5 , 7 , 10]
+    pageSizeOptions: [3 , 5 , 7 , 10],
+    lastPage: false
   })
   searchInputFormControl = new FormControl('');
   searchInputConfig =  signal<InputTextConfigModel>({
@@ -112,6 +117,13 @@ implements OnInit {
       iconFontSize: '15px'
     }
   )
+
+  queryFiltersParams: QueryFiltersParams = {
+    _page : this.paginatorConfig().pageNumber,
+    _limit: this.paginatorConfig().pageSize,
+    name_like: this.searchInputFormControl.value
+  };
+
   heroes = signal<Hero[]>([]);
   heroSelected = signal<Hero | null>(null);
   search: string = "";
@@ -126,13 +138,15 @@ implements OnInit {
     )
     .subscribe({
       next: ( value ) => {
-        if( this.heroes().length > 0 ){
-          this.getHeroes();
-
-
+        this.paginatorConfig.update(( state ) => ({
+          ...state,
+          pageNumber: DEFAULT_PAGE_NUMBER
+        }));
+        this.queryFiltersParams = {
+          _page : DEFAULT_PAGE_NUMBER,
+          name_like: value
         }
-
-        console.log('VALUE CAMBIO ',value)
+        this.getHeroes();
       }
     });
 
@@ -140,31 +154,18 @@ implements OnInit {
     this.getHeroes()
   }
   getHeroes(){
-    
-    this.heroesService.getHeroes()
+    const request =FILTERS_HELPER.buildHttpParams( this.queryFiltersParams );
+    this.heroesService.getHeroes(request)
     .pipe(takeUntil(this.subscriptionsManagerService.subscriptions$))
     .subscribe({
       next: ( response ) => {
-        console.log('response ',response)
-        const from = (this.paginatorConfig().pageNumber * this.paginatorConfig().pageSize) - this.paginatorConfig().pageSize;
-        const to = from + this.paginatorConfig().pageSize;
-        let result: Hero[] = [];
-        const heroName = InputTextHelpers.removeAccentsAndSymbols( this.searchInputFormControl.value ?? "" );
-        if( heroName ){
-          const filterResult = InputTextHelpers.filterHeroes( response , heroName );
-          result = filterResult.slice(from , to);
-          console.log('heroes filtrados ',result)
-        }else {
-          result = response.slice(from , to);
-          console.log('heroes paginados ',result)
-        }
-
+    
         this.paginatorConfig.update(( state ) => ({
           ...state,
           totalRecords: response.length,
-          totalPages: Math.ceil(response.length / state.pageSize)
+          lastPage: response.length < state.pageSize
         }));
-        this.heroes.set( result );
+        this.heroes.set( response );
       },
       error: ( error ) => {
         this.snackBarService.show('error',error.message || "No fue posible ejecutar la acción requerida.", 'Atención');
@@ -173,6 +174,11 @@ implements OnInit {
   }
   onPage( page: PaginatorEmitEvent ){
     const { pageNumber , pageSize } = page;
+    this.queryFiltersParams = {
+      ...this.queryFiltersParams,
+      _page: pageNumber,
+      _limit: pageSize
+    }
     this.paginatorConfig.update(( state ) => ({
       ...state,
       pageNumber: ( pageSize !== state.pageSize ) ? 1 : pageNumber, 
@@ -214,6 +220,14 @@ implements OnInit {
         )
         .subscribe({
           next: ( response ) => {
+            this.queryFiltersParams = {
+              ...this.queryFiltersParams,
+              _page: DEFAULT_PAGE_NUMBER
+            }
+            this.paginatorConfig.update(( state ) => ({
+              ...state,
+              pageNumber: DEFAULT_PAGE_NUMBER
+            }));
             this.getHeroes();
           },
           error: ( error: HttpErrorResponse ) => {

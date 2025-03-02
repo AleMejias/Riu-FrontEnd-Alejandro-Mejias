@@ -32,7 +32,8 @@ export class GenericPaginatorComponent {
     pageSize: 0,
     totalRecords: 0,
     totalPages: 1,
-    pageSizeOptions: []
+    pageSizeOptions: [],
+    lastPage: false
   });
 
   @Input({required: true}) set paginatorConfig(value: GenericPaginatorConfigModel) {

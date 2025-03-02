@@ -14,9 +14,11 @@ import { takeUntil } from 'rxjs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { UppercaseDirective } from '@shared-directives/upper-case.directive';
+import { FadeInAnimation } from '@shared-animations/fadeIn-ui.animations';
 
 @Component({
   selector: 'app-heroes-form',
+  animations: [FadeInAnimation],
   imports: [
     CommonModule,
     ReactiveFormsModule,

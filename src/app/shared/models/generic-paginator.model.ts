@@ -8,6 +8,7 @@ export interface GenericPaginatorConfigModel {
     totalRecords:           number;
     totalPages:             number;
     pageSizeOptions:        number[];
+    lastPage: boolean;
 }
 
 export interface PaginatorEmitEvent{

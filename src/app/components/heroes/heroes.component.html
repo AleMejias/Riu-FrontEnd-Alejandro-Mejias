@@ -1,8 +1,7 @@
 
-<section class="container-fluid border border-danger">
+<section class="container-fluid">
     <div class="row mt-4">
         <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4 col-xxl-4">
-            <!-- <input type="text"> -->
             <app-generic-input-text [inputConfig]="searchInputConfig()"/>
         </div>
         <div class="col-auto">
@@ -27,6 +26,8 @@
                             (buttonEvent)="onHandleCardButtons($event)"
                         />
                     </div>
+                }@empty {
+                    <h3 [style]="{ textAlign: 'center',fontWeight: '400',color: '#716666'}">No se encontraron resultados</h3>
                 }
             </div>
         </div>

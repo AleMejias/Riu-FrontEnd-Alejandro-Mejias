@@ -28,6 +28,7 @@
       "@shared-directives/*": ["app/shared/directives/*"],
       "@shared-models/*": ["app/shared/models/*"],
       "@shared-helpers/*": ["app/shared/helpers/*"],
+      "@shared-animations/*": ["app/shared/animations/*"],
       "@ui-components/*": ["app/ui/components/*"],
       "@ui-models/*": ["app/ui/models/*"],
       "@ui-dialogs/*": ["app/ui/dialogs/*"],

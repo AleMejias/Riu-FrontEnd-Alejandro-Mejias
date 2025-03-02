@@ -1,10 +1,10 @@
 {
   "heroes": [
     {
-      "id": "1",
-      "name": "Spiderman",
+      "name": "SPIDERMAN",
+      "biography": "Intentando sacarle provecho económico a sus habilidades participó en concursos de lucha libre donde le bautizaron como Spider-man, pero tras dejar escapar a un ladrón por considerar que no era su problema, éste delincuente asesinó a su tío Ben, y recordando uno de los lemas que su tío le repetía habitualmente: Todo gran poder conlleva una gran responsabilidad, decidió utilizar sus poderes para que nadie sufriera lo mismo. Utilizando sus conocimientos científicos creó un material similar a las telarañas y unos dispositivos con los que lanzarlas para transportarse por Nueva York, continuamente mejorando su traje y utilizando la ciencia para vencer a los villanos al mismo tiempo que entabló amistad con superhéroes como los Cuatro Fantásticos y Daredevil.Ha sufrido muchas tragedias por culpa de sus enemigos, tanto en su vida heroica como personal, y aunque no suele tener suerte, ha continuado luchando y salvando su ciudad, el planeta e incluso el universo.",
       "universe": "MARVEL",
-      "biography": "Intentando sacarle provecho económico a sus habilidades participó en concursos de lucha libre donde le bautizaron como Spider-man, pero tras dejar escapar a un ladrón por considerar que no era su problema, éste delincuente asesinó a su tío Ben, y recordando uno de los lemas que su tío le repetía habitualmente: Todo gran poder conlleva una gran responsabilidad, decidió utilizar sus poderes para que nadie sufriera lo mismo. Utilizando sus conocimientos científicos creó un material similar a las telarañas y unos dispositivos con los que lanzarlas para transportarse por Nueva York, continuamente mejorando su traje y utilizando la ciencia para vencer a los villanos al mismo tiempo que entabló amistad con superhéroes como los Cuatro Fantásticos y Daredevil.Ha sufrido muchas tragedias por culpa de sus enemigos, tanto en su vida heroica como personal, y aunque no suele tener suerte, ha continuado luchando y salvando su ciudad, el planeta e incluso el universo."
+      "id": "1"
     },
     {
       "name": "IRON MAN",
@@ -43,10 +43,10 @@
       "id": "8"
     },
     {
-      "id": "9",
-      "name": "DeadPool",
+      "name": "DEADPOOL",
+      "biography": "Deadpool, el mercenario más bocazas del mundo cree que su nombre es Wade Wilson, pero no está del todo seguro. Recuerda que su padre pegaba a su madre, pero también que su madre le crió soltera y le maltrató, pero nada de eso importa porque sabe a la perfección que es un personaje de ficción y que dependiendo del guionista, su creatividad o el respeto a la continuidad del personaje tendrá un origen o otro…",
       "universe": "MARVEL",
-      "biography": "Deadpool, el mercenario más bocazas del mundo cree que su nombre es Wade Wilson, pero no está del todo seguro. Recuerda que su padre pegaba a su madre, pero también que su madre le crió soltera y le maltrató, pero nada de eso importa porque sabe a la perfección que es un personaje de ficción y que dependiendo del guionista, su creatividad o el respeto a la continuidad del personaje tendrá un origen o otro…"
+      "id": "9"
     },
     {
       "id": "10",
@@ -113,12 +113,6 @@
       "name": "HARLEY QUINN",
       "biography": "La psicóloga Harleen Quinzel estaba trabajando en el Asilo Arkham cuando el Joker fue detenido e internado para recibir tratamiento; cuando le dieron el caso, Joker fue ganándose poco a poco su confianza y manipulandola en sus sesiones hasta el punto de empezar a revertir los roles, con ella contándole intimidades de su vida, su pasado familiar y metas, que le hicieron plantearse el rumbo de su vida.  Antes de darse cuenta Harleen estaba completamente enamorada de él, hasta niveles obsesivos y el villano la utilizó para escapar del manicomio. Sorprendentemente, renunció a su carrera para convertirse en una acompañante del payaso, adoptando incluso una identidad como la del Joker, en honor a la figura del arlequín, modificando su propio nombre, Harley Quinn.",
       "universe": "DC"
-    },
-    {
-      "name": "ANTORCHA HUMANA",
-      "biography": "Pertenece a los cuatro fantasticos",
-      "universe": "MARVEL",
-      "id": "c320"
     }
   ]
 }

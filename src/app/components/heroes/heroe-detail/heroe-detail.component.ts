@@ -10,9 +10,11 @@ import { GenericButtonComponent } from '@ui-components/generic-button/generic-bu
 import { GenericButtonConfigModel } from '@ui-models/generic-button.model';
 import { takeUntil } from 'rxjs';
 import { SpinnerService } from '@shared-services/spinner.service';
+import { FadeInAnimation } from '@shared-animations/fadeIn-ui.animations';
 
 @Component({
   selector: 'app-heroe-detail',
+  animations: [FadeInAnimation],
   imports: [
     CommonModule,
     GenericButtonComponent

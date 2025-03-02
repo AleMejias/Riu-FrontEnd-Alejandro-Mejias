@@ -22,11 +22,11 @@
     </div>
     <div class="paginatorContainer__pages">
         <div class="paginatorContainer__pages--pageInfo">
-            {{ config?.pageInfoTitle || 'Página' }} {{ config.pageNumber }} {{ config?.pageInfoSeparator || '-' }} {{ config.totalPages }} 
+            {{ config?.pageInfoTitle || 'Página' }} {{ config.pageNumber }} 
         </div>
         <div>
             <fa-icon [icon]="fontAwesomeProviders.faChevronLeft" [style]="{cursor:(config.pageNumber === 1) ? 'default' : 'pointer', margin: '0px 5px', opacity: (config.pageNumber === 1) ? '.5' : '1'}" (click)="(config.pageNumber === 1) ? null : onHandlePreviousPage()"/>
-            <fa-icon [icon]="fontAwesomeProviders.faChevronRight" [style]="{cursor:(config.pageNumber === config.totalPages) ? 'default' : 'pointer', margin: '0px 5px' , opacity: (config.pageNumber === config.totalPages) ? '.5' : '1'}" (click)="(config.pageNumber === config.totalPages) ? null : onHandleNextPage()" />
+            <fa-icon [icon]="fontAwesomeProviders.faChevronRight" [style]="{cursor: (config.lastPage) ? 'default' : 'pointer', margin: '0px 5px' , opacity: (config.lastPage) ? '.5' : '1'}" (click)="(config.lastPage) ? null : onHandleNextPage()" />
         </div>
     </div>
 </section>
