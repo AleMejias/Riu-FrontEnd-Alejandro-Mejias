@@ -2,7 +2,9 @@ import {
     faSearch,
     faEye,
     faEdit,
-    faTrash
+    faTrash,
+    faChevronLeft,
+    faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -10,5 +12,7 @@ export const FontAwesomeProviders = {
     faSearch,
     faEdit,
     faEye,
-    faTrash 
+    faTrash,
+    faChevronLeft,
+    faChevronRight 
 }

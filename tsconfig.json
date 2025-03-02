@@ -20,13 +20,21 @@
     "baseUrl": "./src",
     "paths": {
       "@services/*": ["app/services/*"],
+      "@assets/*": ["src/assets/*"],
       "@models/*": ["app/models/*"],
       "@components/*": ["app/components/*"],
       "@shared-components/*": ["app/shared/components/*"],
+      "@shared-services/*": ["app/shared/services/*"],
+      "@shared-directives/*": ["app/shared/directives/*"],
+      "@shared-models/*": ["app/shared/models/*"],
+      "@shared-helpers/*": ["app/shared/helpers/*"],
       "@ui-components/*": ["app/ui/components/*"],
       "@ui-models/*": ["app/ui/models/*"],
+      "@ui-dialogs/*": ["app/ui/dialogs/*"],
+      "@ui-services/*": ["app/ui/services/*"],
       "@fontawesome-provider/*":["app/assets/fontawesome/*"],
-      "@core-services/*": ["app/core/services/*"]
+      "@core-services/*": ["app/core/services/*"],
+      "@core-interceptors/*": ["app/core/interceptors/*"]
     }
   },
   "angularCompilerOptions": {

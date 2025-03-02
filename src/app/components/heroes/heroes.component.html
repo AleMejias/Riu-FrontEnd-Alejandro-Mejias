@@ -1,19 +1,34 @@
+
 <section class="container-fluid border border-danger">
     <div class="row mt-4">
-        <div class="col"><input type="text"></div>
-    </div>
-    <div class="row mt-4">
-        <div class="grid-container">
-            @for (hero of heroes(); track hero.id) {
-                <div class="grid-container__item">
-                    <app-heroe-card 
-                        [hero]="hero" 
-                        [buttonConfig]="cardHeroDetailButton()"
-                        (buttonEvent)="onHandleHeroDetail($event)"
-                        />
-                </div>
-            }
+        <div class="col-auto">
+            <input type="text">
+        </div>
+        <div class="col-auto">
+            <app-generic-button [buttonConfig]="createHeroButton()" (buttonEvent)="onCreateButton($event)"/>
+        </div>
+    </div> 
+    <div class="row mt-2">
+        <div class="col">
+            <app-generic-paginator [paginatorConfig]="paginatorConfig()" (paginatorEvent)="onPage($event)" />
         </div>
     </div>
+    @if( (spinnerService.loading$ | async) === false ){
+        <div class="row mt-4">
+            <div class="grid-container">
+                @for (hero of heroes(); track hero.id) {
+                    <div class="grid-container__item">
+                        <app-heroe-card 
+                            [hero]="hero" 
+                            [buttonDetailConfig]="detailHeroButton()"
+                            [buttonEditConfig]="editHeroButton()"
+                            [buttonDeleteConfig]="deleteHeroButton()"
+                            (buttonEvent)="onHandleCardButtons($event)"
+                        />
+                    </div>
+                }
+            </div>
+        </div>
+    }
 
 </section>

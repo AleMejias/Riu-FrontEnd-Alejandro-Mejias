@@ -1,1 +1,34 @@
-<p>generic-paginator works!</p>
+@let config = paginatorConfig;
+<section class="paginatorContainer">
+    <div class="paginatorContainer__pageOptions">
+        <div class="paginatorContainer__pageOptions--firstTitle">
+            {{ config?.pageOptionsFirstTitle }}
+        </div>
+        <button type="button" class="paginatorContainer__pageOptions--options" (click)="onDisplayPageSizeOptions()">
+            {{config.pageSize}}
+            @if( displayPageSizeOptions ){
+                <ul class="availablePageSizes">
+                    @for (option of config.pageSizeOptions; track $index) {
+                        @if( option !== config.pageSize ){
+                            <li (click)="onHandlePageOptionSelected(option)">{{ option }}</li>
+                        }
+                    }
+                </ul>
+            }
+        </button>
+        <div class="paginatorContainer__pageOptions--secondTitle">
+            {{ config?.pageOptionsSecondTitle }}
+        </div>
+    </div>
+    <div class="paginatorContainer__pages">
+        <div class="paginatorContainer__pages--pageInfo">
+            {{ config?.pageInfoTitle || 'Página' }} {{ config.pageNumber }} {{ config?.pageInfoSeparator || '-' }} {{ config.totalPages }} 
+        </div>
+        <div>
+            <fa-icon [icon]="fontAwesomeProviders.faChevronLeft" [style]="{cursor:(config.pageNumber === 1) ? 'default' : 'pointer', margin: '0px 5px', opacity: (config.pageNumber === 1) ? '.5' : '1'}" (click)="(config.pageNumber === 1) ? null : onHandlePreviousPage()"/>
+            <fa-icon [icon]="fontAwesomeProviders.faChevronRight" [style]="{cursor:(config.pageNumber === config.totalPages) ? 'default' : 'pointer', margin: '0px 5px' , opacity: (config.pageNumber === config.totalPages) ? '.5' : '1'}" (click)="(config.pageNumber === config.totalPages) ? null : onHandleNextPage()" />
+<!--        <lib-font-awesome-icons-ui [iconDefition]="fontAwesomeProviders.faChevronLeft" [styles]="{cursor:(config.pageNumber === 1) ? 'default' : 'pointer', margin: '0px 5px', opacity: (config.pageNumber === 1) ? '.5' : '1'}" (click)="(config.pageNumber === 1) ? null : onHandlePreviousPage()"/>
+            <lib-font-awesome-icons-ui [iconDefition]="fontAwesomeProviders.faChevronRight" [styles]="{cursor:(config.pageNumber === config.totalPages) ? 'default' : 'pointer', margin: '0px 5px' , opacity: (config.pageNumber === config.totalPages) ? '.5' : '1'}" (click)="(config.pageNumber === config.totalPages) ? null : onHandleNextPage()"/> -->
+        </div>
+    </div>
+</section>

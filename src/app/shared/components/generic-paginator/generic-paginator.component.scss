@@ -1,0 +1,84 @@
+:host{
+    --page-size-options-background: #fff;
+    --page-size-options-font-color: #333;
+    --page-size-options-border: 1px solid #d3d3d3;
+    --page-size-options-font-size: 14px !important;
+    --page-size-options-font-weight: 400;
+    --page-size-titles-font-size: 13px;
+    --page-size-titles-font-weight: 500;
+    --page-size-options-hover-color: #f0f0f0;
+
+    --page-info-font-color: #333;
+    --page-info-font-size: 14px;
+    --page-info-font-weight: 500;
+    --page-info-column-gap: 20px;
+}
+
+.paginatorContainer{
+    display: flex;
+    padding: 5px 0px;
+    .paginatorContainer__pageOptions{
+        flex: 1;
+        display: flex;
+        color: var( --page-size-options-font-color );
+        .paginatorContainer__pageOptions--firstTitle,
+        .paginatorContainer__pageOptions--secondTitle{
+            display: flex;
+            align-items: center;
+            padding: 0px 5px;
+            font-size: var( --page-size-titles-font-size );
+            font-weight: var( --page-size-titles-font-weight );
+
+        }
+        .paginatorContainer__pageOptions--options{
+            min-width: 70px;
+            min-height: 30px;
+            border-radius: 5px;
+            color: var( --page-size-options-font-color );
+            border: var( --page-size-options-border );
+            background: var( --page-size-options-background );
+            cursor: pointer;
+            font-size: var( --page-size-options-font-size );
+            font-weight: var( --page-size-options-font-weight );
+            position: relative;
+            text-decoration: none;
+            outline: none !important;
+            .availablePageSizes{
+                position: absolute;
+                background: var( --page-size-options-background );
+                right: 0;
+                border: var( --page-size-options-border );
+                width: 100%;
+                top: 100%;
+                border-radius: 2px;
+                max-height: 200px;
+                overflow: auto;
+                z-index: 20000;
+                padding: 0;
+                li{
+                    list-style: none;
+                    cursor: pointer;
+                    transition: background-color 0.2s ease;
+                    padding: 5px 0px;
+                }
+                li:hover{
+                    background-color: var(--page-size-options-hover-color);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .paginatorContainer__pages{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding-right: 20px;
+        column-gap: var( --page-info-column-gap );
+        color: var(--page-info-font-color);
+        .paginatorContainer__pages--pageInfo{
+            font-size: var( --page-info-font-size );
+            font-weight: var( --page-info-font-weight );
+        }
+    }
+}

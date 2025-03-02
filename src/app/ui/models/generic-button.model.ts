@@ -2,7 +2,7 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export interface GenericButtonConfigModel<T> {
 
-    butttonId: string;
+    butttonId?: string;
     label: string;
     title: string;
     fontAwesomeIcon: IconDefinition | null;

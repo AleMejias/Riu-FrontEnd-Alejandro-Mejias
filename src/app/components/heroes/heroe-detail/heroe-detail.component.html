@@ -1,0 +1,32 @@
+
+@if( (spinnerService.loading$ | async) === false ){
+    <section class="container mt-4">
+        <div class="row">
+            <div class="col-2">
+                <app-generic-button [buttonConfig]="backButtonConfig()" (buttonEvent)="onHandleButtonClick()"/>
+            </div>
+        </div>
+        <div class="row mt-5">
+            @if (hero !== null) {
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
+                          <div class="card-biography">
+                            {{hero.biography}}
+                          </div>
+                          <div class="card-description">
+                            <p class="card-title">{{ hero.name }}</p>
+                            <div class="card-image">
+                                <img [srcset]="'/assets/heroes/'+(hero.universe | lowercase) +'-logo.png'" alt="Universo"/>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            }@else {
+                <h2>Heroe no encontrado</h2>
+            }
+    
+        </div>
+    </section>
+}
