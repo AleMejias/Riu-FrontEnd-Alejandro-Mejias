@@ -1,0 +1,26 @@
+<div class="card" @FadeIn>
+    <div class="card-details">
+      <p class="card-title">{{ hero.name }}</p>
+      <p class="card-subtitle">{{ hero.universe | uppercase }}</p>
+    </div>
+    @let detailConfig = buttonDetailConfig();
+    @let editConfig = buttonEditConfig();
+    @let deleteConfig = buttonDeleteConfig();
+    <div class="card-actions_buttons">
+        @if( detailConfig ){
+            <div class="detail-button">
+                <app-generic-button [buttonConfig]="detailConfig" (buttonEvent)="onHandleButtonClick($event)"/>
+            </div>
+        }
+        @if( editConfig ){
+            <div class="edit-button">
+                <app-generic-button [buttonConfig]="editConfig" (buttonEvent)="onHandleButtonClick($event)"/>
+            </div>
+        }
+        @if( deleteConfig ){
+            <div class="edit-button">
+                <app-generic-button [buttonConfig]="deleteConfig" (buttonEvent)="onHandleButtonClick($event)"/>
+            </div>
+        }
+    </div>
+</div>

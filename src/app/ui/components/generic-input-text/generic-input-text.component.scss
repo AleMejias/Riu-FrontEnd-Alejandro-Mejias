@@ -1,0 +1,37 @@
+:host {
+  --input-border: #9b9b9b42;
+  --input-border-radius: 8px;
+  --input-background: #fff;
+  --input-font-color: #9ca3af;
+  --input-error-font-color: #e75050;
+  --input-height: 40px;
+  --label-color: #868687;
+  --label-font-size: 14px;
+  --label-font-weight: 500;
+}
+
+.inputContainer {
+  .inputContainer__label {
+    color: var(--label-color);
+    font-weight: var(--label-font-weight);
+    font-size: var(--label-font-size);
+    padding: 5px 0px;
+  }
+
+  .inputContainer__input {
+    padding: 4px 0px;
+    background: var(--input-background);
+    border: 1px solid var(--input-border);
+    border-radius: var(--input-border-radius);
+    color: var(--input-font-color);
+    display: flex;
+    height: var(--input-height);
+    input {
+      background: var(--input-background);
+      border: none;
+      outline: none;
+      padding-left: 10px;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+
+<section class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4 col-xxl-4">
+            <app-generic-input-text [inputConfig]="searchInputConfig()"/>
+        </div>
+        <div class="col-auto">
+            <app-generic-button [buttonConfig]="createHeroButton()" (buttonEvent)="onCreateButton($event)"/>
+        </div>
+    </div> 
+    <div class="row mt-2">
+        <div class="col">
+            <app-generic-paginator [paginatorConfig]="paginatorConfig()" (paginatorEvent)="onPage($event)" />
+        </div>
+    </div>
+    @if( (spinnerService.loading$ | async) === false ){
+        <div class="row mt-4">
+            <div class="grid-container">
+                @for (hero of heroes(); track hero.id) {
+                    <div class="grid-container__item">
+                        <app-heroe-card 
+                            [hero]="hero" 
+                            [buttonDetailConfig]="detailHeroButton()"
+                            [buttonEditConfig]="editHeroButton()"
+                            [buttonDeleteConfig]="deleteHeroButton()"
+                            (buttonEvent)="onHandleCardButtons($event)"
+                        />
+                    </div>
+                }@empty {
+                    <h3 [style]="{ textAlign: 'center',fontWeight: '400',color: '#716666'}">No se encontraron resultados</h3>
+                }
+            </div>
+        </div>
+    }
+
+</section>

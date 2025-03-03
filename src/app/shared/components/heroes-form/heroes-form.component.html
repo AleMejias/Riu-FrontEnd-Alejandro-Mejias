@@ -1,0 +1,76 @@
+
+@if( (spinnerService.loading$ | async) === false ){
+    <section class="container mt-4" @FadeIn>
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                <app-generic-button [buttonConfig]="backButtonConfig()" (buttonEvent)="onHandleButtonClick($event)"/>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="form-container">
+                <form class="form" [formGroup]="heroForm">
+                    <div class="form-title">{{ (this.hero) ? 'Editar Heroe' : 'Crear Heroe' }}</div>
+                    <div class="form-field-name">
+                        <input type="text" placeholder="Nombre del heroe" class="input" formControlName="name" appUppercase />
+                        <div class="error-field-container">
+                            @if( heroForm.controls.name.getError('minlength')){
+                                <span class="error-field">Este campo requiere al menos 3 caracteres</span>
+                            }
+                            @if( heroForm.controls.name.getError('required') && heroForm.controls.name.touched ){
+                                <span class="error-field">Este campo es requerido</span>
+                            }
+                        </div>
+       
+                    </div>
+                    <div class="form-field-biography">
+                        <textarea placeholder="Historia relacionada al heroe"  formControlName="biography"></textarea>
+                        <div class="error-field-container">
+                            @if( heroForm.controls.biography.getError('minlength')){
+                                <span class="error-field">Este campo requiere al menos 10 caracteres</span>
+                            }
+                            @if( heroForm.controls.biography.getError('required') && heroForm.controls.biography.touched ){
+                                <span class="error-field">Este campo es requerido</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-field-universe">
+                        <div>
+                            Universo:
+                        </div>
+                        <label>
+                            Marvel
+                            <input
+                              type="radio"
+                              class="custom-checkbox"
+                              formControlName="universe"
+                              [value]="'MARVEL'"
+                            />
+                        </label>
+                        <label>
+                            Dc
+                            <input
+                              type="radio"
+                              class="custom-checkbox"
+                              formControlName="universe"
+                              [value]="'DC'"
+                            />
+                        </label>
+                        <div class="error-field-container">
+                            @if( heroForm.controls.universe.getError('required') && heroForm.controls.universe.touched ){
+                                <span class="error-field">Este campo es requerido</span>
+                            }
+                        </div>
+                    </div>
+                
+                    @if( heroForm.valid ){
+                        <div class="form-submit-button">
+                            <app-generic-button [buttonConfig]="submitButtonConfig()" (buttonEvent)="onHandleButtonClick($event)"/>
+                        </div>
+                    }
+                </form>
+            </div>
+   
+        </div>
+    </section>
+}
+

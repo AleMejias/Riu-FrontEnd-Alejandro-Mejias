@@ -16,9 +16,32 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "baseUrl": "./src",
+    "types": ["jest"],
+    "paths": {
+      "@services/*": ["app/services/*"],
+      "@assets/*": ["src/assets/*"],
+      "@models/*": ["app/models/*"],
+      "@components/*": ["app/components/*"],
+      "@shared-components/*": ["app/shared/components/*"],
+      "@shared-services/*": ["app/shared/services/*"],
+      "@shared-directives/*": ["app/shared/directives/*"],
+      "@shared-models/*": ["app/shared/models/*"],
+      "@shared-helpers/*": ["app/shared/helpers/*"],
+      "@shared-animations/*": ["app/shared/animations/*"],
+      "@ui-components/*": ["app/ui/components/*"],
+      "@ui-models/*": ["app/ui/models/*"],
+      "@ui-dialogs/*": ["app/ui/dialogs/*"],
+      "@ui-services/*": ["app/ui/services/*"],
+      "@ui-helpers/*": ["app/ui/helpers/*"],
+      "@fontawesome-provider/*":["app/assets/fontawesome/*"],
+      "@core-services/*": ["app/core/services/*"],
+      "@core-interceptors/*": ["app/core/interceptors/*"]
+    }
   },
   "angularCompilerOptions": {
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.spec.ts", "src/**/*.test.ts"],
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

@@ -1,0 +1,40 @@
+
+@let config = buttonConfig();
+<div class="buttonContainer">
+    <button 
+    type="button"
+    [matTooltip]="config.title"
+    (click)="onHandleButtonClick(config)"
+    class="buttonContainer__button"
+    [style]="{
+      width: ( config.width) ? config.width : 'fit-content',
+      border: ( config.borderColor) ? config.borderColor : '#fff',
+      borderWith:  ( config.borderWidth) ? config.borderWidth : '1px', 
+      borderRadius: ( config.borderRadius ) ? config.borderRadius : '0px',
+      background: ( config.buttonBackground ) ? config.buttonBackground : '#000',
+      color: ( config.labelColor ) ? config.labelColor : '#fff',
+      fontSize: ( config.labelFontSize ) ? config.labelFontSize : '14px',
+      fontWeight: ( config.labelFontWeight ) ? config.labelColor : '500',
+      cursor: ( config.buttonCursor ) ? config.buttonCursor : 'pointer',
+      padding:( config.buttonPadding ) ? config.buttonPadding : '5px 5px' 
+    }">
+        @if( config.labelPosition === 'before' ){
+            {{ config.label }}
+        }
+        @if( config.fontAwesomeIcon !== null){
+            <div class="buttonContainer__button--icon">
+                <app-fontawesome-icon 
+                [style]="{
+      color: ( config.iconColor ) ? config.iconColor : '#fff',
+      fontSize: ( config.iconFontSize ) ? config.iconFontSize : '14px',
+      fontWeight: ( config.iconFontWeight ) ? config.iconFontWeight : '500'
+                }"
+                [iconDefition]="config.fontAwesomeIcon" 
+                />
+            </div>
+        }
+        @if( config.labelPosition === 'after' ){
+            {{ config.label }}
+        }
+    </button>
+</div>
