@@ -12,7 +12,7 @@ import { GenericButtonComponent } from '@ui-components/generic-button/generic-bu
 import { SnackBarService } from '@shared-services/snackbar.service';
 import { DialogsService } from '@ui-services/dialogs.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FontAwesomeProviders } from 'assets/fontawesome/font-awesome-icons.provider';
+import { FontAwesomeProviders } from '../../../assets/fontawesome/font-awesome-icons.provider';
 import { GenericPaginatorConfigModel, PaginatorEmitEvent } from '@shared-models/generic-paginator.model';
 import { GenericPaginatorComponent } from '@shared-components/generic-paginator/generic-paginator.component';
 import { InputTextConfigModel } from '@ui-models/generic-text.model';
@@ -36,7 +36,7 @@ const DEFAULT_PAGE_NUMBER = 1;
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.scss'
 })
-export default class HeroesComponent
+export class HeroesComponent
 implements OnInit {
 
 
@@ -44,7 +44,7 @@ implements OnInit {
   private readonly subscriptionsManagerService = inject( SubscriptionsManagerService );
   public readonly spinnerService = inject( SpinnerService );
   private readonly router = inject( Router );
-  private readonly snackBarService = inject( SnackBarService );
+  public readonly snackBarService = inject( SnackBarService );
   private readonly dialogsService = inject( DialogsService );
 
   paginatorConfig = signal<GenericPaginatorConfigModel>({

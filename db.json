@@ -1,12 +1,6 @@
 {
   "heroes": [
     {
-      "name": "SPIDERMAN",
-      "biography": "Intentando sacarle provecho económico a sus habilidades participó en concursos de lucha libre donde le bautizaron como Spider-man, pero tras dejar escapar a un ladrón por considerar que no era su problema, éste delincuente asesinó a su tío Ben, y recordando uno de los lemas que su tío le repetía habitualmente: Todo gran poder conlleva una gran responsabilidad, decidió utilizar sus poderes para que nadie sufriera lo mismo. Utilizando sus conocimientos científicos creó un material similar a las telarañas y unos dispositivos con los que lanzarlas para transportarse por Nueva York, continuamente mejorando su traje y utilizando la ciencia para vencer a los villanos al mismo tiempo que entabló amistad con superhéroes como los Cuatro Fantásticos y Daredevil.Ha sufrido muchas tragedias por culpa de sus enemigos, tanto en su vida heroica como personal, y aunque no suele tener suerte, ha continuado luchando y salvando su ciudad, el planeta e incluso el universo.",
-      "universe": "MARVEL",
-      "id": "1"
-    },
-    {
       "name": "IRON MAN",
       "biography": "Tony Stark, hijo de Howard y María Stark, se convirtió en el heredero de Industrias Stark (una empresa armamentística), cuando sus padres murieron en un accidente de tráfico. Con tantos privilegios, además de sus estudios en ingeniería y física, le convirtieron en un arrogante y egoísta playboy. En un viaje de negocios sufrió un ataque terrorista donde le hirieron de gravedad cerca del corazón y lo secuestraron para que desarrollara armas para ellos. Aprovechó los materiales disponibles y desarrolló junto a otro científico prisionero una armadura que mantuvo su corazón a salvo y le permitió enfrentarse a sus captores y escapar, en ese momento nació Iron Man…",
       "universe": "MARVEL",

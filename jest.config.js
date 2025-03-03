@@ -1,11 +1,26 @@
 module.exports = {
   preset: "jest-preset-angular",
   setupFilesAfterEnv: ["<rootDir>/setup-jest.ts"],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testRegex: '(/_test_/.*|(\\.|/)(spec))\\.ts?$',
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   moduleNameMapper: {
     '@app/(.*)$': '<rootDir>/src/app/$1',
-    '@ui/(.*)$': '<rootDir>/src/app/shared/$1'
+    '@components/(.*)$': '<rootDir>/src/app/components/$1',
+    '@ui-components/(.*)$': '<rootDir>/src/app/ui/components/$1',
+    '@ui-services/(.*)$': '<rootDir>/src/app/ui/services/$1',
+    '@ui-dialogs/(.*)$': '<rootDir>/src/app/ui/dialogs/$1',
+    '@shared-components/(.*)$': '<rootDir>/src/app/shared/components/$1',
+    "@shared-directives/(.*)$": ["<rootDir>/src/app/shared/directives/$1"],
+    "@shared-animations/(.*)$": ["<rootDir>/src/app/shared/animations/$1"],
+    "@shared-helpers/(.*)$": ["<rootDir>/src/app/shared/helpers/$1"],
+    '@shared/(.*)$': '<rootDir>/src/app/shared/$1',
+    '@ui-models/(.*)$': '<rootDir>/src/app/ui/models/$1',
+    '@services/(.*)$': '<rootDir>/src/app/services/$1',
+    '@models/(.*)$': '<rootDir>/src/app/models/$1',
+    "@core-services/(.*)$": ["<rootDir>/src/app/core/services/$1"],
+    "@shared-services/(.*)$": ["<rootDir>/src/app/shared/services/$1"],
+    "@fontawesome-provider/(.*)$":["<rootDir>/src/assets/fontawesome/$1"],
   }
 };
 /* module.exports = {

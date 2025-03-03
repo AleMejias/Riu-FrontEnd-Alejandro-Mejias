@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, output, signal } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GenericPaginatorConfigModel, PaginatorEmitEvent } from '@shared-models/generic-paginator.model';
-import { FontAwesomeProviders } from 'assets/fontawesome/font-awesome-icons.provider';
+import { FontAwesomeProviders } from '../../../../assets/fontawesome/font-awesome-icons.provider';
 
 @Component({
   selector: 'app-generic-paginator',

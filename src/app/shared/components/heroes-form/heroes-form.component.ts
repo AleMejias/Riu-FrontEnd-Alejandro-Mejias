@@ -13,8 +13,8 @@ import { GenericButtonConfigModel } from '@ui-models/generic-button.model';
 import { takeUntil } from 'rxjs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { UppercaseDirective } from '@shared-directives/upper-case.directive';
-import { FadeInAnimation } from '@shared-animations/fadeIn-ui.animations';
+import { UppercaseDirective } from '../../directives/upper-case.directive';
+import { FadeInAnimation } from '../../animations/fadeIn-ui.animations';
 
 @Component({
   selector: 'app-heroes-form',
@@ -30,7 +30,7 @@ import { FadeInAnimation } from '@shared-animations/fadeIn-ui.animations';
   templateUrl: './heroes-form.component.html',
   styleUrl: './heroes-form.component.scss'
 })
-export default class HeroesFormComponent {
+export class HeroesFormComponent {
   private readonly activatedRoute = inject( ActivatedRoute );
   private readonly heroesService = inject( HeroesService );
   private readonly router = inject( Router );
