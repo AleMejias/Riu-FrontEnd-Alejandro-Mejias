@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontawesomeIconComponent } from '@ui-components/fontawesome-icon/fontawesome-icon.component';
 import { InputTextConfigModel } from '@ui-models/generic-text.model';
@@ -11,6 +11,7 @@ import { InputTextConfigModel } from '@ui-models/generic-text.model';
     ReactiveFormsModule,
     FontawesomeIconComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './generic-input-text.component.html',
   styleUrl: './generic-input-text.component.scss'
 })

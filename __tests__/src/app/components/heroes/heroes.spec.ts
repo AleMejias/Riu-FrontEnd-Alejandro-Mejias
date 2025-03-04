@@ -191,17 +191,14 @@ describe('HeroesComponent', () => {
     const hero: Hero = { id: "1", name: 'Hero 1', biography: 'should call deleteHero and show snackbar on successful delete', universe: 'DC' };
     dialogsService.confirmDialog.mockReturnValue(of(true));
     heroesService.deleteHero.mockReturnValue(of({}));
-  
-    // Simula la llamada al método de eliminación de héroes
+
     component.onDeleteHero(hero);
   
-    // Verifica que el servicio de eliminación de héroes se haya llamado con el ID correcto
     expect(heroesService.deleteHero).toHaveBeenCalledWith(hero.id);
   
-    // Simula la actualización de la lista de héroes después de eliminar uno
     component.heroes.set([{ id: "2", name: 'Hero 2', biography: 'Another hero', universe: 'MARVEL' }]);
     component.snackBarService.show('success', 'Hero deleted successfully', 'Success');
-    // Verifica que el snackbar se haya mostrado con el mensaje correcto
+
     expect(snackBarService.show).toHaveBeenCalledTimes(1);
     expect(snackBarService.show).toHaveBeenCalledWith('success', 'Hero deleted successfully', 'Success');
   });

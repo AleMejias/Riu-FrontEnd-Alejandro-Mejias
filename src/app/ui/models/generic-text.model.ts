@@ -6,6 +6,6 @@ export interface InputTextConfigModel {
     fontAwesomeIcon: IconDefinition | null;
     iconStyles?: {[key: string] : string};
     placeHolder: string;
-    inputId: string; /* Esta propiedad representa la misma key que tendra en los formularios en donde se utilice */
+    inputId: string;
     control: FormControl;
 }
