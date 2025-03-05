@@ -14,8 +14,7 @@ Proyecto de CRUD sencillo utilizando Angular 19 y JSON SERVER como fake api como
 
 1. Clonar repositorio: https://github.com/AleMejias/Riu-FrontEnd-Alejandro-Mejias.git
 2. Reconstruir Node: npm i
-3. Levantar api fake: npm run start:json-server
-4. Levantar aplicacion: ng serve -o
+3. Levantar aplicacion: ng serve -o
 
 ## Ejecución de contenedor docker
 1. Abrir docker.desktop
