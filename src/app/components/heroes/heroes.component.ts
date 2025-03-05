@@ -165,22 +165,22 @@ implements OnInit {
     .pipe(takeUntil(this.subscriptionsManagerService.subscriptions$))
     .subscribe({
       next: ( response ) => {
-
         const currentState = this.filtersService.getFiltersState();
+        console.log('response ',response)
         const from = (currentState.pageNumber * currentState.pageSize) - currentState.pageSize;
         const to = from + currentState.pageSize;
         let result: Hero[] = [];
 
         const heroName = InputTextHelpers.removeAccentsAndSymbols( this.searchInputFormControl.value ?? "" );
         if( heroName ){
-          const filterResult = InputTextHelpers.filterHeroes( response.heroes.slice(from , to) , heroName );
+          const filterResult = InputTextHelpers.filterHeroes( response.slice(from , to) , heroName );
           result = filterResult;
         }else {
-          result = response.heroes.slice(from , to);
+          result = response.slice(from , to);
         }
-        const totalRecords = response.heroes.length;
-        const totalPages = Math.ceil(response.heroes.length / currentState.pageSize);
-        const lastPage = ((currentState.pageNumber * currentState.pageSize) > response.heroes.length) 
+        const totalRecords = response.length;
+        const totalPages = Math.ceil(response.length / currentState.pageSize);
+        const lastPage = ((currentState.pageNumber * currentState.pageSize) >= response.length) 
         this.paginatorConfig.update(( state ) => ({
           ...state,
           totalRecords,
@@ -250,6 +250,7 @@ implements OnInit {
             }
             this.paginatorConfig.update(( state ) => ({
               ...state,
+              pageSize: DEFAULT_PAGE_SIZE,
               pageNumber: DEFAULT_PAGE_NUMBER
             }));
             this.getHeroes();

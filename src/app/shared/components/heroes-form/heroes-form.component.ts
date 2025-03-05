@@ -64,7 +64,7 @@ export class HeroesFormComponent {
     }
   )
   hero: Hero | null = null;
-
+  heroId: string = "";
   heroForm = new FormGroup({
     name: new FormControl('',[Validators.required , Validators.minLength(3)]),
     biography: new FormControl('',[Validators.required , Validators.minLength(10)]),
@@ -76,12 +76,17 @@ export class HeroesFormComponent {
     
       if( Object.keys( params ).length > 0 ){
         const { id } = params;
-        this.heroesService.getHeroById( id )
+        this.heroId = id;
+        this.heroesService.getHeroById( this.heroId )
         .pipe(
           takeUntil(this.subscriptionsManagerService.subscriptions$)
         )
         .subscribe({
           next: ( response ) => {
+            if( !response ){
+              this.snackBarService.show('error','No se encontró algun heroe seleccionado', 'Atención');
+              return;
+            }
 
             this.heroForm.patchValue(response);
             this.hero = response;
@@ -104,10 +109,14 @@ export class HeroesFormComponent {
     }else if( button.butttonId === 'submit_button' ){
 
       if( this.heroForm.valid ){
-        const request = this.heroForm.getRawValue() as Partial<Hero>;
+        const formState = this.heroForm.getRawValue() as Omit<Hero , 'id'>;
+        const request: Hero = {
+          ...formState,
+          id: this.heroId
+        }
 
         if( this.hero?.id ){
-          this.heroesService.updateHero( request ,this.hero.id)
+          this.heroesService.updateHero( request)
           .pipe(
             takeUntil(this.subscriptionsManagerService.subscriptions$)
           )

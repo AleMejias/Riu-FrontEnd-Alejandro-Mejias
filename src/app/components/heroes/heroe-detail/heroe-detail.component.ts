@@ -57,6 +57,10 @@ implements OnInit {
         )
         .subscribe({
           next: ( response ) => {
+            if( !response ){
+              this.snackBarService.show('error','No se encontró algun heroe seleccionado', 'Atención');
+              return;
+            }
             this.hero = response;
           },
           error: ( error: HttpErrorResponse ) => {
