@@ -166,7 +166,6 @@ implements OnInit {
     .subscribe({
       next: ( response ) => {
         const currentState = this.filtersService.getFiltersState();
-        console.log('response ',response)
         const from = (currentState.pageNumber * currentState.pageSize) - currentState.pageSize;
         const to = from + currentState.pageSize;
         let result: Hero[] = [];
