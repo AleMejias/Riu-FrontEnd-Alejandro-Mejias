@@ -7,7 +7,8 @@ import { Hero } from '../models/heroes.model';
 })
 export class HeroesService {
 
-  private readonly apiUrl = 'http://localhost:5000/heroes';
+  // private readonly apiUrl = 'http://localhost:5000/heroes';
+  private readonly apiUrl = 'assets/data.json';
   private readonly http = inject( HttpClient );
 
   getHeroes( params: HttpParams = {} as HttpParams ){
@@ -16,7 +17,7 @@ export class HeroesService {
       'Custom-Message': 'No fue posible consultar el listado de heroes'
     });
 
-    return this.http.get<Hero[]>(this.apiUrl, {headers , params})
+    return this.http.get<{heroes:Hero[]}>(this.apiUrl, {headers , params})
   }
   getHeroById( heroId: string ){
     const headers = new HttpHeaders({

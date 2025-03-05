@@ -97,13 +97,13 @@
       "biography": "El millonario Oliver Queen, heredero de Industrias Queen, es un arquero que patrulla la ciudad de Star City/Seattle como vigilante justiciero para luchar contra los criminales, preocupado siempre por las injusticias sociales, lo que lo enfrenta a los abusos de las grandes empresas y los políticos que se aprovechan de los ciudadanos. Aunque el origen de Flecha Verde (Green Arrow) ha variado varias veces, lo que lo impulsa siempre a utilizar sus habilidades como arquero y ser un superhéroe sin poderes es sobrevivir en una isla perdida."
     },
     {
-      "id": "1037",
+      "id": "19",
       "name": "INCREIBLE HULK",
       "biography": "Robert Bruce Banner era un introvertido científico que trabajaba para el gobierno de Estados Unidos de América probando una bomba de rayos gamma experimental, cuando un joven se coló en el campo de prueba. Sin preocuparse por la cuenta atrás o su propia seguridad Banner corrió a salvar al chico a costa de ser expuesto a la explosión, que en vez de matarle le irradió y dejó inconsciente. Tras un tiempo convaleciente sin ninguna herida de gravedad despertó, pero algo dentro de él había crecido y tras situaciones de estrés o heridas, una nueva persona salía del cuerpo de Banner, al más puro estilo “Doctor Jekyll y Mr. Hyde”, la bestia más fuerte del mundo: el increíble Hulk …",
       "universe": "MARVEL"
     },
     {
-      "id": "a17a",
+      "id": "20",
       "name": "HARLEY QUINN",
       "biography": "La psicóloga Harleen Quinzel estaba trabajando en el Asilo Arkham cuando el Joker fue detenido e internado para recibir tratamiento; cuando le dieron el caso, Joker fue ganándose poco a poco su confianza y manipulandola en sus sesiones hasta el punto de empezar a revertir los roles, con ella contándole intimidades de su vida, su pasado familiar y metas, que le hicieron plantearse el rumbo de su vida.  Antes de darse cuenta Harleen estaba completamente enamorada de él, hasta niveles obsesivos y el villano la utilizó para escapar del manicomio. Sorprendentemente, renunció a su carrera para convertirse en una acompañante del payaso, adoptando incluso una identidad como la del Joker, en honor a la figura del arlequín, modificando su propio nombre, Harley Quinn.",
       "universe": "DC"
@@ -112,13 +112,13 @@
       "name": "PRUEBA NUEVO HEROE",
       "biography": "PRUEBA CREAR",
       "universe": "DC",
-      "id": "HG6bnnT"
+      "id": "21"
     },
     {
       "name": "PRUEBA HEROES 7",
       "biography": "PRUEBA HEROES 7",
       "universe": "MARVEL",
-      "id": "3hphIpz"
+      "id": "22"
     }
   ]
 }

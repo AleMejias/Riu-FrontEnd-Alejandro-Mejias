@@ -173,14 +173,14 @@ implements OnInit {
 
         const heroName = InputTextHelpers.removeAccentsAndSymbols( this.searchInputFormControl.value ?? "" );
         if( heroName ){
-          const filterResult = InputTextHelpers.filterHeroes( response.slice(from , to) , heroName );
+          const filterResult = InputTextHelpers.filterHeroes( response.heroes.slice(from , to) , heroName );
           result = filterResult;
         }else {
-          result = response.slice(from , to);
+          result = response.heroes.slice(from , to);
         }
-        const totalRecords = response.length;
-        const totalPages = Math.ceil(response.length / currentState.pageSize);
-        const lastPage = ((currentState.pageNumber * currentState.pageSize) > response.length) 
+        const totalRecords = response.heroes.length;
+        const totalPages = Math.ceil(response.heroes.length / currentState.pageSize);
+        const lastPage = ((currentState.pageNumber * currentState.pageSize) > response.heroes.length) 
         this.paginatorConfig.update(( state ) => ({
           ...state,
           totalRecords,

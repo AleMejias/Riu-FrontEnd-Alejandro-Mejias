@@ -5,10 +5,12 @@ services:
     volumes:
       - ./db.json:/app/db.json
     working_dir: /app
-    command: json-server --port=5000 --watch db.json
+    command: |
+      bash -c "npm install -g json-server && json-server --port 5000 --watch db.json --host 0.0.0.0"
     ports:
       - "5000:5000"
+
   angular-app:
     build: .
     ports:
-      - "4200:4200"
+      - "4200:4200"  # Mapear el puerto 80 de Nginx al puerto 4200 en el host
