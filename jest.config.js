@@ -10,6 +10,7 @@ module.exports = {
     '@ui-components/(.*)$': '<rootDir>/src/app/ui/components/$1',
     '@ui-services/(.*)$': '<rootDir>/src/app/ui/services/$1',
     '@ui-dialogs/(.*)$': '<rootDir>/src/app/ui/dialogs/$1',
+    '@ui-helpers/(.*)$': '<rootDir>/src/app/ui/helpers/$1',
     '@shared-components/(.*)$': '<rootDir>/src/app/shared/components/$1',
     "@shared-directives/(.*)$": ["<rootDir>/src/app/shared/directives/$1"],
     "@shared-animations/(.*)$": ["<rootDir>/src/app/shared/animations/$1"],

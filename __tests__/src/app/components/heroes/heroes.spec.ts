@@ -190,7 +190,7 @@ describe('HeroesComponent', () => {
   it('should call deleteHero and show snackbar on successful delete', () => {
     const hero: Hero = { id: "1", name: 'Hero 1', biography: 'should call deleteHero and show snackbar on successful delete', universe: 'DC' };
     dialogsService.confirmDialog.mockReturnValue(of(true));
-    heroesService.deleteHero.mockReturnValue(of({}));
+    heroesService.deleteHero.mockReturnValue(of(hero));
 
     component.onDeleteHero(hero);
   

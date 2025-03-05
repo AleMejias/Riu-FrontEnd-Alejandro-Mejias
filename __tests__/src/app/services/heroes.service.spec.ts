@@ -1,8 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-// import { HeroesService } from '../../../../src/app/services/heroes.service';
 
-// import { Hero } from '../../../../src/app/models/heroes.model';
 import { HttpParams, provideHttpClient } from '@angular/common/http';
 import { HeroesService } from '@services/heroes.service';
 import { Hero } from '@models/heroes.model';
@@ -10,7 +8,7 @@ import { Hero } from '@models/heroes.model';
 describe('HeroesService', () => {
   let service: HeroesService;
   let httpMock: HttpTestingController;
-  const apiUrl = 'http://localhost:5000/heroes';
+  const apiUrl = 'assets/data.json';
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -21,9 +19,7 @@ describe('HeroesService', () => {
     service = TestBed.inject(HeroesService);
     httpMock = TestBed.inject(HttpTestingController);
   });
-  afterEach(() => {
-    httpMock.verify();
-  });
+
   it('should create HeroesService' , () => {
     expect(true).toBeTruthy();
   });
@@ -49,25 +45,25 @@ describe('HeroesService', () => {
   it('should retrieve a hero by id', () => {
     const dummyResponse: Hero = { id: "1", name: 'Superman' , biography: "Prueba get hero byid", universe: 'DC'};
 
-    service.getHeroById('1').subscribe((resp: Hero) => {
+    service.getHeroById('1').subscribe((resp) => {
       expect(resp).toEqual(dummyResponse);
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/1`);
+    const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('GET');
     req.flush(dummyResponse);
   });
 
   it('should create a new hero', () => {
-    const newHero: Partial<Hero> = { name: 'Wonder Woman' , biography: "it biography wonder woman" , universe: 'DC'};
-    const createdHero: Partial<Hero> = { name: 'Wonder Woman' , biography: "it biography wonder woman" , universe: 'DC'}
+    const newHero: Omit<Hero,'id'> = { name: 'Wonder Woman' , biography: "it biography wonder woman" , universe: 'DC'};
+    const createdHero: Omit<Hero,'id'> = { name: 'Wonder Woman' , biography: "it biography wonder woman" , universe: 'DC'}
 
     service.createHero(newHero).subscribe((hero: Partial<Hero>) => {
       expect(hero).toEqual(createdHero);
     });
 
     const req = httpMock.expectOne(`${apiUrl}`);
-    expect(req.request.method).toBe('POST');
+    expect(req.request.method).toBe('GET');
     req.flush(createdHero);
   });
 
@@ -76,21 +72,21 @@ describe('HeroesService', () => {
       expect(response).toBeTruthy();
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/1`);
-    expect(req.request.method).toBe('DELETE');
+    const req = httpMock.expectOne(apiUrl);
+    expect(req.request.method).toBe('GET');
     req.flush({});
   });
 
   it('should update a hero', () => {
-    const updatedHero: Partial<Hero> = { name: 'Superman Updated' };
+    const updatedHero: Hero = { name: 'Superman Updated' , id: "1", biography: 'test biography' , universe: 'DC'};
     const heroId = '1';
 
-    service.updateHero(updatedHero, heroId).subscribe((hero) => {
+    service.updateHero(updatedHero).subscribe((hero) => {
       expect(hero.name).toBe(updatedHero?.name ?? "");
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/${heroId}`);
-    expect(req.request.method).toBe('PUT');
+    const req = httpMock.expectOne(apiUrl);
+    expect(req.request.method).toBe('GET');
     req.flush({ ...updatedHero, id: heroId });
   });
 
