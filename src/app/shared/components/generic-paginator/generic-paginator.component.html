@@ -22,7 +22,7 @@
     </div>
     <div class="paginatorContainer__pages">
         <div class="paginatorContainer__pages--pageInfo">
-            {{ config?.pageInfoTitle || 'Página' }} {{ config.pageNumber }} 
+            {{ config?.pageInfoTitle || 'Página' }} {{ config.pageNumber }} de {{ config.totalPages }}
         </div>
         <div>
             <fa-icon [icon]="fontAwesomeProviders.faChevronLeft" [style]="{cursor:(config.pageNumber === 1) ? 'default' : 'pointer', margin: '0px 5px', opacity: (config.pageNumber === 1) ? '.5' : '1'}" (click)="(config.pageNumber === 1) ? null : onHandlePreviousPage()"/>

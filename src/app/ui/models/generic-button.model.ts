@@ -10,7 +10,7 @@ export interface GenericButtonConfigModel<T> {
     content: T | null;
     iconsStyles?: {[key: string] : number | string};
     width?: string;
-    buttonPadding?:string; // Con esta propiedad seteamos su ancho y largo
+    buttonPadding?:string;
     buttonCursor?: string;
     buttonBackground?: string;
     labelFontSize?: string;

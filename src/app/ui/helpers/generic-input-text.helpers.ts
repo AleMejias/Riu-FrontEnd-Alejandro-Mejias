@@ -3,9 +3,7 @@ import { Hero } from "@models/heroes.model";
 const filterHeroes = ( options: Hero[] , currentInputvalue: string ): Hero[] => {
     let result: Hero[] = [];
     const inputValueWithoutSymbols = removeAccentsAndSymbols( currentInputvalue );
-    result = options.filter(( option ) =>   removeAccentsAndSymbols( option.name ).includes( inputValueWithoutSymbols ) /* ||
-                                            removeAccentsAndSymbols( option.biography ).includes( inputValueWithoutSymbols ) || 
-                                            removeAccentsAndSymbols( option.universe ).includes( inputValueWithoutSymbols ) */
+    result = options.filter(( option ) =>   removeAccentsAndSymbols( option.name ).includes( inputValueWithoutSymbols )
     );
 
 
