@@ -121,6 +121,9 @@ export class HeroesService {
     }
   ]);
 
+  getTotalHeroes (){
+    return this.heroes$.getValue();
+  }
 
   setHeroe( hero: Omit<Hero , 'id'> ){
     const currentState = this.heroes$.getValue();

@@ -15,6 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { UppercaseDirective } from '../../directives/upper-case.directive';
 import { FadeInAnimation } from '../../animations/fadeIn-ui.animations';
+import { FiltersService } from '@shared-services/filters.service';
 
 @Component({
   selector: 'app-heroes-form',
@@ -33,6 +34,7 @@ import { FadeInAnimation } from '../../animations/fadeIn-ui.animations';
 export class HeroesFormComponent {
   private readonly activatedRoute = inject( ActivatedRoute );
   private readonly heroesService = inject( HeroesService );
+  private readonly filtersService = inject( FiltersService );
   private readonly router = inject( Router );
   private readonly subscriptionsManagerService = inject( SubscriptionsManagerService );
   private readonly snackBarService = inject( SnackBarService );
@@ -122,6 +124,13 @@ export class HeroesFormComponent {
           )
           .subscribe({
             next: ( response ) => {
+              let currentState = this.filtersService.getFiltersState();
+              let currentTotal = this.heroesService.getTotalHeroes();
+              currentState = {
+                ...currentState,
+                pageNumber: Math.ceil(currentTotal.length / currentState.pageSize)
+              }
+              this.filtersService.setFiltersState(currentState);
               this.router.navigate(['heroes']);
             },
             error: ( error: HttpErrorResponse ) => {
@@ -135,6 +144,13 @@ export class HeroesFormComponent {
           )
           .subscribe({
             next: ( response ) => {
+              let currentState = this.filtersService.getFiltersState();
+              let currentTotal = this.heroesService.getTotalHeroes();
+              currentState = {
+                ...currentState,
+                pageNumber: Math.ceil(currentTotal.length / currentState.pageSize)
+              }
+              this.filtersService.setFiltersState(currentState);
               this.router.navigate(['heroes']);
             },
             error: ( error: HttpErrorResponse ) => {

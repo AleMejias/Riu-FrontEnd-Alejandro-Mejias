@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, Input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, Input, output } from '@angular/core';
 import { Hero } from '@models/heroes.model';
 import { FadeInAnimation } from '@shared-animations/fadeIn-ui.animations';
 import { GenericButtonComponent } from '@ui-components/generic-button/generic-button.component';

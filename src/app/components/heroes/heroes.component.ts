@@ -172,7 +172,7 @@ implements OnInit {
 
         const heroName = InputTextHelpers.removeAccentsAndSymbols( this.searchInputFormControl.value ?? "" );
         if( heroName ){
-          const filterResult = InputTextHelpers.filterHeroes( response.slice(from , to) , heroName );
+          const filterResult = InputTextHelpers.filterHeroes( response , heroName );
           result = filterResult;
         }else {
           result = response.slice(from , to);
