@@ -35,7 +35,7 @@ implements OnInit {
   backButtonConfig = signal<GenericButtonConfigModel<Hero>>({
       content: null,
       fontAwesomeIcon: null,
-      label: 'Voler al listado',
+      label: 'Volver al listado',
       title: 'Navegar',
       labelPosition: 'after',
       buttonBackground: '#2E80E9',
